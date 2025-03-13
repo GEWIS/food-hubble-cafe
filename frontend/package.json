@@ -13,11 +13,10 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "dotenv": "^16.4.7",
+    "framer-motion": "^12.5.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "typescript": "^4.9.5",
-    "usehooks-ts": "^3.1.1",
-    "web-vitals": "^2.1.4"
+    "typescript": "^4.9.5"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",

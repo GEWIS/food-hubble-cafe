@@ -1,34 +1,65 @@
 import './index.css'
-import { useState} from 'react';
-import {useInterval} from "usehooks-ts";
-import Order from "./Order";
+import {useEffect, useState} from 'react';
+import {AnimatePresence, motion} from 'framer-motion';
+
+interface Order {
+    number: number;
+    startTime: string;
+    timeoutSeconds: number;
+}
 
 function App() {
-    const [orders, setOrders] = useState<number[]>([])
+    const [orders, setOrders] = useState<Order[]>([])
 
-    useInterval(
-        () => {
+    useEffect(() => {
+        const interval = setInterval(() => {
             fetch('/api/getOrders')
                 .then(response => response.json())
-                .then(response => setOrders(response.orders))
+                .then(response => {
+                    setOrders(response.filter((order: Order) => {
+                        const timeTillOrderEnd = new Date(order.startTime).getTime() + order.timeoutSeconds * 1000 - Date.now();
+                        return timeTillOrderEnd > 0
+                    }))
+                })
                 .catch((e) => console.error(e))
-        },
-        import.meta.env.VITE_ORDER_INTERVAL
-    )
+        }, import.meta.env.VITE_ORDER_INTERVAL || 5000);
+
+        return () => clearInterval(interval);
+    }, [])
 
     return (
         <div className="main">
-            <div className="order-container">
-                <img src="/hubble-logo.png" alt="Hubble Logo" width="80%" className={"logo"}/>
-                {
-                    orders.map((order, i) => (
-                        <Order
-                            key={i}
-                            orderNumber={order}
-                        />
-                    ))
-                }
+            <div className="header-container">
+                <img src="/hubble-logo.png" alt="Hubble Logo" className={"logo"}/>
+                <h1> Ready for pickup </h1>
             </div>
+            <ul className="order-container">
+                <AnimatePresence>
+                    {
+                        orders.map((order) => (
+                            <motion.li className="order"
+                                       key={order.number}
+                                       initial={{scale: 0}}
+                                       animate={{
+                                           scale: 1,
+                                           transition: {delay: 0.5, type: "spring"}
+                                       }}
+                                       exit={{
+                                           opacity: 0,
+                                           transition: {delay: 0.5}
+                                       }}
+
+                                       layout
+
+                            >
+                                <div className="content">
+                                    <h1>{order.number}</h1>
+                                </div>
+                            </motion.li>
+                        ))
+                    }
+                </AnimatePresence>
+            </ul>
         </div>
     );
 }
