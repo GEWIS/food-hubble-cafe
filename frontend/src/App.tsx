@@ -4,8 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 interface Order {
   number: number;
-  startTime: string;
-  timeoutSeconds: number;
+  expiry: string;
 }
 
 function App() {
@@ -19,7 +18,7 @@ function App() {
           .then((response: Order[]) => {
             setOrders(
               response.filter((order) => {
-                const timeTillOrderEnd = new Date(order.startTime).getTime() + order.timeoutSeconds * 1000 - Date.now();
+                const timeTillOrderEnd = new Date(order.expiry).getTime() - Date.now();
                 return timeTillOrderEnd > 0;
               }),
             );
