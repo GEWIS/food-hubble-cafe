@@ -6,8 +6,8 @@ COPY package.json ./
 COPY yarn.lock ./
 
 RUN corepack enable
-RUN yarn install --frozen-lockfile
 COPY . ./
+RUN yarn install --frozen-lockfile
 RUN yarn build
 
 # prod
