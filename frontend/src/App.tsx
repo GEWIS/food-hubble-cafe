@@ -10,23 +10,24 @@ interface Order {
 function App() {
   const [orders, setOrders] = useState<Order[]>([]);
 
+  const getOrders = () => {
+    fetch('/api/getOrders')
+      .then((response) => response.json())
+      .then((response: Order[]) => {
+        setOrders(
+          response.filter((order) => {
+            const timeTillOrderEnd = new Date(order.expiry).getTime() - Date.now();
+            return timeTillOrderEnd > 0;
+          }),
+        );
+      })
+      .catch((e) => console.error(e));
+  };
+
   useEffect(() => {
-    const interval = setInterval(
-      () => {
-        fetch('/api/getOrders')
-          .then((response) => response.json())
-          .then((response: Order[]) => {
-            setOrders(
-              response.filter((order) => {
-                const timeTillOrderEnd = new Date(order.expiry).getTime() - Date.now();
-                return timeTillOrderEnd > 0;
-              }),
-            );
-          })
-          .catch((e) => console.error(e));
-      },
-      (import.meta.env.VITE_ORDER_INTERVAL as number) || 5000,
-    );
+    getOrders();
+
+    const interval = setInterval(getOrders, (import.meta.env.VITE_ORDER_INTERVAL as number) || 5000);
 
     return () => clearInterval(interval);
   }, []);
