@@ -2,14 +2,16 @@ version: '3'
 
 services:
   frontend:
-    build: frontend
+    build:
+      dockerfile: frontend/Dockerfile
     restart: 'unless-stopped'
     ports:
       - '80:80'
     networks:
       - hubble-food
   receiver:
-    build: receiver
+    build:
+      dockerfile: receiver/Dockerfile
     restart: 'unless-stopped'
     networks:
       - hubble-food
