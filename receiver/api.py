@@ -18,10 +18,8 @@ class OrderResponse(TypedDict):
     orders: list[Order]
 
 @app.get("/api/getOrders")
-def get_order() -> OrderResponse:
-    return {
-        "orders": order_store.get_orders()
-    }
+def get_order() -> list[Order]:
+    return order_store.get_orders()
 
 @app.post("/api/order/webhook")
 def add_order_webhook(order: OrderRequest, x_signature: Annotated[str | None, Header()] = None):
