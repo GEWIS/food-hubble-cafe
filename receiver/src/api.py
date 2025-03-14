@@ -17,7 +17,7 @@ class OrderRequest(BaseModel):
 class OrderResponse(TypedDict):
     orders: list[Order]
 
-@app.get("/api/getOrders")
+@app.get("/api/order")
 def get_order() -> list[Order]:
     return order_store.get_orders()
 

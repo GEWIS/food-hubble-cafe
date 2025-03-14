@@ -11,7 +11,7 @@ function App() {
   const [orders, setOrders] = useState<Order[]>([]);
 
   const getOrders = () => {
-    fetch('/api/getOrders')
+    fetch('/api/order')
       .then((response) => response.json())
       .then((response: Order[]) => {
         setOrders(
