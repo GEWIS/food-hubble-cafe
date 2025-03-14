@@ -1,4 +1,4 @@
-name: Docker Build and Push
+name: Semantic Release
 
 on:
   push:
@@ -9,7 +9,19 @@ on:
       - main
 
 jobs:
-  dockerize:
-    uses: GEWIS/actions/.github/workflows/docker-build.yml@v1
+  versioning:
+    uses: GEWIS/actions/.github/workflows/versioning.yml@v1
+
+  release:
+    uses: GEWIS/actions/.github/workflows/docker-release.yml@v1
+    needs: versioning
+    if: ${{ needs.versioning.outputs.next-version != '' }}
     with:
-      projects: '["frontend", "receiver"]'
+      projects: "['frontend', 'receiver']"
+      version: ${{ needs.versioning.outputs.next-version }}
+      docker-registry: "abc.docker-registry.gewis.nl"
+      docker-paths: "['nc/aurora/food-hubble-cafe']"
+      github-registry: "true"
+    secrets:
+      REGISTRY_USERNAME: ${{ secrets.SVC_GH_ABCNC_USERNAME }}
+      REGISTRY_PASSWORD: ${{ secrets.SVC_GH_ABCNC_PWD }}
