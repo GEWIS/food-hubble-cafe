@@ -17,11 +17,11 @@ class OrderRequest(BaseModel):
 class OrderResponse(TypedDict):
     orders: list[Order]
 
-@app.get("/api/order")
+@app.get("/api/orders")
 def get_order() -> list[Order]:
     return order_store.get_orders()
 
-@app.post("/api/order/webhook")
+@app.post("/api/orders/webhook")
 def add_order_webhook(order: OrderRequest, x_signature: Annotated[str | None, Header()] = None):
     if not x_signature or not webhook_verifier.signature_valid(order.model_dump_json(), x_signature):
         raise HTTPException(status_code=400, detail="Invalid signature")
@@ -29,6 +29,6 @@ def add_order_webhook(order: OrderRequest, x_signature: Annotated[str | None, He
     order_store.add_order(order.orderNumber, order.timeoutSeconds)
 
 # TODO: remove this after testing
-@app.post("/api/order")
+@app.post("/api/orders")
 def add_order(order: OrderRequest):
     order_store.add_order(order.orderNumber, order.timeoutSeconds)
