@@ -19,7 +19,7 @@ jobs:
     with:
       projects: "['frontend', 'receiver']"
       version: ${{ needs.versioning.outputs.next-version }}
-      docker-paths: "['x/hubble/orderlist-frontend', 'x/hubble/orderlist-receiver']"
+      docker-paths: "['x/orderlist']"
       github-registry: "true"
     secrets:
       REGISTRY_USERNAME: ${{ secrets.SVC_GH_ABCNC_USERNAME }}
