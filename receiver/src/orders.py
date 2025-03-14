@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, UTC
 from typing_extensions import TypedDict
 
 DEFAULT_TIMEOUT_SECONDS = 300
@@ -19,7 +19,7 @@ class OrderStore:
 
         # Calculate the datetime starting which this order should no longer be visible
         timeout = timeout_seconds if timeout_seconds is not None else DEFAULT_TIMEOUT_SECONDS
-        expiry: datetime = datetime.now() + timedelta(seconds=timeout)
+        expiry: datetime = datetime.now(UTC) + timedelta(seconds=timeout)
 
         self._orders.append({'number': order_number, 'expiry': expiry})
 
@@ -38,5 +38,5 @@ class OrderStore:
         if not self._should_cleanup():
             return
 
-        now = datetime.now()
+        now = datetime.now(UTC)
         self._orders = [order for order in self._orders if now < order['expiry']]
