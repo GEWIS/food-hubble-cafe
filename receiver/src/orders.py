@@ -1,8 +1,12 @@
 from datetime import datetime, timedelta, UTC
 from typing_extensions import TypedDict
+from dotenv import load_dotenv
+import os
 
-DEFAULT_TIMEOUT_SECONDS = 300
-CLEAN_INTERVAL_SECONDS = 5
+load_dotenv()
+
+DEFAULT_TIMEOUT_SECONDS = int(os.getenv('DEFAULT_TIMEOUT_SECONDS', 300))
+CLEAN_INTERVAL_SECONDS = int(os.getenv('CLEAN_INTERVAL_SECONDS', 5))
 
 class Order(TypedDict):
     number: int
