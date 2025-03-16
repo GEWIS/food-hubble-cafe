@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Header, HTTPException
+from fastapi import FastAPI, Header, HTTPException, Request
 from typing import Dict, Annotated
 from pydantic import BaseModel
 from typing_extensions import TypedDict
@@ -30,13 +30,12 @@ def get_order() -> list[Order]:
     return order_store.get_orders()
 
 @app.post("/api/orders/webhook")
-def add_order_webhook(order: OrderRequest, x_signature: Annotated[str | None, Header()] = None):
-    # TODO: Remove after testing
+async def add_order_webhook(order: OrderRequest, request: Request, x_signature: Annotated[str | None, Header()] = None):
     print(order)
     print(x_signature)
     if not x_signature:
         raise HTTPException(status_code=400, detail="X-Signature header required")
-    if not webhook_verifier.signature_valid(order.model_dump_json(), x_signature):
+    if not webhook_verifier.signature_valid(await request.body(), x_signature):
         raise HTTPException(status_code=400, detail="Invalid signature")
 
     order_store.add_order(order.orderNumber, order.timeoutSeconds)
@@ -47,8 +46,8 @@ def add_order(order: OrderRequest):
     order_store.add_order(order.orderNumber, order.timeoutSeconds)
 
 @app.post("/api/test/example")
-def test_webhook(body: StarApiTestRequest, x_signature: Annotated[str | None, Header()] = None):
+async def test_webhook(body: StarApiTestRequest, request: Request, x_signature: Annotated[str | None, Header()] = None):
     if not x_signature:
         raise HTTPException(status_code=400, detail="X-Signature header required")
-    if not webhook_verifier.signature_valid(body.model_dump_json(), x_signature):
+    if not webhook_verifier.signature_valid(await request.body(), x_signature):
         raise HTTPException(status_code=400, detail="Invalid signature")

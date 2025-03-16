@@ -29,7 +29,8 @@ class WebhookVerifier:
         self._public_key_pem = response.text
         self._updated_at = datetime.datetime.now()
 
-    def signature_valid(self, json_body: str, signature_header: str) -> bool:
+
+    def signature_valid(self, json_body: bytes, signature_header: str) -> bool:
         if self._should_update_key():
             self._update_key()
 
@@ -37,7 +38,7 @@ class WebhookVerifier:
         public_key = RSA.import_key(self._public_key_pem)
 
         # Compute the SHA256 hash of the JSON body
-        hashed_body = SHA256.new(json_body.encode('utf-8'))
+        hashed_body = SHA256.new(json_body)
 
         try:
             # Decode the Base64 signature
