@@ -11,7 +11,7 @@ on:
       - develop
 
 jobs:
-  build-and-lint:
+  build-and-lint-frontend:
     uses: GEWIS/actions/.github/workflows/lint-and-build-yarn.yml@v1
     with:
       working-directory: "frontend"
@@ -19,3 +19,20 @@ jobs:
       lint: true
       format: true
       build: true
+
+  build-and-lint-receiver:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r receiver/requirements.txt
+      - name: Run Ruff Check
+        run: ruff check --output-format=github receiver
+      - name: Run Ruff Formatter
+        run: ruff format --check receiver

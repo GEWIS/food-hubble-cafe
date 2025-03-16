@@ -5,12 +5,14 @@ import os
 
 load_dotenv()
 
-DEFAULT_TIMEOUT_SECONDS = int(os.getenv('DEFAULT_TIMEOUT_SECONDS', 300))
-CLEAN_INTERVAL_SECONDS = int(os.getenv('CLEAN_INTERVAL_SECONDS', 5))
+DEFAULT_TIMEOUT_SECONDS = int(os.getenv("DEFAULT_TIMEOUT_SECONDS", 300))
+CLEAN_INTERVAL_SECONDS = int(os.getenv("CLEAN_INTERVAL_SECONDS", 5))
+
 
 class Order(TypedDict):
     number: int
     expiry: datetime
+
 
 class OrderStore:
     def __init__(self, cleanup_interval_seconds: int = 5):
@@ -22,10 +24,12 @@ class OrderStore:
         self._cleanup()
 
         # Calculate the datetime starting which this order should no longer be visible
-        timeout = timeout_seconds if timeout_seconds is not None else DEFAULT_TIMEOUT_SECONDS
+        timeout = (
+            timeout_seconds if timeout_seconds is not None else DEFAULT_TIMEOUT_SECONDS
+        )
         expiry: datetime = datetime.now(UTC) + timedelta(seconds=timeout)
 
-        self._orders.append({'number': order_number, 'expiry': expiry})
+        self._orders.append({"number": order_number, "expiry": expiry})
 
     def get_orders(self) -> list[Order]:
         self._cleanup()
@@ -43,4 +47,4 @@ class OrderStore:
             return
 
         now = datetime.now(UTC)
-        self._orders = [order for order in self._orders if now < order['expiry']]
+        self._orders = [order for order in self._orders if now < order["expiry"]]
