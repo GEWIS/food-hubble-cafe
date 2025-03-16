@@ -39,11 +39,11 @@ class WebhookVerifier:
         # Compute the SHA256 hash of the JSON body
         hashed_body = SHA256.new(json_body.encode('utf-8'))
 
-        # Decode the Base64 signature
-        decoded_signature = base64.b64decode(signature_header)
-
-        # Verify the signature
         try:
+            # Decode the Base64 signature
+            decoded_signature = base64.b64decode(signature_header)
+
+            # Verify the signature
             pkcs1_15.new(public_key).verify(hashed_body, decoded_signature)
             return True
         except (ValueError, TypeError):
