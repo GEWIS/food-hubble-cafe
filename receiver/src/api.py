@@ -31,6 +31,9 @@ def get_order() -> list[Order]:
 
 @app.post("/api/orders/webhook")
 def add_order_webhook(order: OrderRequest, x_signature: Annotated[str | None, Header()] = None):
+    # TODO: Remove after testing
+    print(order)
+    print(x_signature)
     if not x_signature:
         raise HTTPException(status_code=400, detail="X-Signature header required")
     if not webhook_verifier.signature_valid(order.model_dump_json(), x_signature):
