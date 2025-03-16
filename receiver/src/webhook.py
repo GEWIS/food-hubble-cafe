@@ -5,13 +5,16 @@ from Crypto.PublicKey import RSA
 from Crypto.Signature import pkcs1_15
 from Crypto.Hash import SHA256
 
+
 class WebhookVerifier:
-    def __init__(self,
-                 public_key_url: str = "https://api.starcommunity.app/.well-known/webhooks.key",
-                 expiry_seconds: int = 3600):
+    def __init__(
+        self,
+        public_key_url: str = "https://api.starcommunity.app/.well-known/webhooks.key",
+        expiry_seconds: int = 3600,
+    ):
         self._public_key_url: str = public_key_url
         self._expiry_seconds: int = expiry_seconds
-        self._public_key_pem: str = ''
+        self._public_key_pem: str = ""
         self._updated_at: datetime.datetime = datetime.datetime.now()
 
         self._update_key()
@@ -28,7 +31,6 @@ class WebhookVerifier:
 
         self._public_key_pem = response.text
         self._updated_at = datetime.datetime.now()
-
 
     def signature_valid(self, json_body: bytes, signature_header: str) -> bool:
         if self._should_update_key():
