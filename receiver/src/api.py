@@ -17,37 +17,15 @@ class OrderRequest(BaseModel):
 class OrderResponse(TypedDict):
     orders: list[Order]
 
-class StarApiTestNested(BaseModel):
-    example: str
-
-class StarApiTestRequest(StarApiTestNested):
-    nested: StarApiTestNested
-    numeric: int
-    bool: bool
-
 @app.get("/api/orders")
 def get_order() -> list[Order]:
     return order_store.get_orders()
 
 @app.post("/api/orders/webhook")
 async def add_order_webhook(order: OrderRequest, request: Request, x_signature: Annotated[str | None, Header()] = None):
-    print(order)
-    print(x_signature)
     if not x_signature:
         raise HTTPException(status_code=400, detail="X-Signature header required")
     if not webhook_verifier.signature_valid(await request.body(), x_signature):
         raise HTTPException(status_code=400, detail="Invalid signature")
 
     order_store.add_order(order.orderNumber, order.timeoutSeconds)
-
-# TODO: remove this after testing
-@app.post("/api/orders")
-def add_order(order: OrderRequest):
-    order_store.add_order(order.orderNumber, order.timeoutSeconds)
-
-@app.post("/api/test/example")
-async def test_webhook(body: StarApiTestRequest, request: Request, x_signature: Annotated[str | None, Header()] = None):
-    if not x_signature:
-        raise HTTPException(status_code=400, detail="X-Signature header required")
-    if not webhook_verifier.signature_valid(await request.body(), x_signature):
-        raise HTTPException(status_code=400, detail="Invalid signature")
