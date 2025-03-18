@@ -15,10 +15,12 @@ function App() {
       .then((response) => response.json())
       .then((response: Order[]) => {
         setOrders(
-          response.filter((order) => {
-            const timeTillOrderEnd = new Date(order.expiry).getTime() - Date.now();
-            return timeTillOrderEnd > 0;
-          }),
+          response
+            .filter((order) => {
+              const timeTillOrderEnd = new Date(order.expiry).getTime() - Date.now();
+              return timeTillOrderEnd > 0;
+            })
+            .sort((a, b) => b.number - a.number),
         );
       })
       .catch((e) => console.error(e));
@@ -35,8 +37,10 @@ function App() {
   return (
     <div className="main">
       <div className="header-container">
-        <img src="/hubble-logo.png" alt="Hubble Logo" className={'logo'} />
-        <h1> Ready for pickup </h1>
+        <img src="/hubble-logo.png" alt="Hubble Logo" className="logo" />
+      </div>
+      <div className="pickup-container">
+        <h1> Ready for Pickup </h1>
       </div>
       <ul className="order-container">
         <AnimatePresence>
