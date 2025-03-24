@@ -4,6 +4,7 @@
   "compilerOptions": {
     "lib": ["DOM"],
     "types": ["node"],
+    "module": "esnext",
     "moduleResolution": "bundler"
   },
   "include": ["eslint.config.*", ".prettierrc.*", "vite.config.*", "package.json"]
