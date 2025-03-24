@@ -51,6 +51,10 @@ body {
     justify-content: center;
     grid-template-columns: 80%;
   }
+
+  .pickup-container {
+    font-size: medium;
+  }
 }
 
 .logo {
