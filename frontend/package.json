@@ -13,9 +13,9 @@
   },
   "type": "module",
   "dependencies": {
-    "@gewis/tsconfig": "^2.3.0",
-    "@types/node": "^22.13.10",
-    "@types/react": "^19.0.10",
+    "@gewis/tsconfig": "^2.3.1",
+    "@types/node": "^22.13.13",
+    "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "dotenv": "^16.4.7",
     "framer-motion": "^12.5.0",

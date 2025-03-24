@@ -533,10 +533,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gewis/tsconfig@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "@gewis/tsconfig@npm:2.3.0"
-  checksum: 10c0/d0767c1c5c508b9fb80cc436c932f8eacffe5e22956006f47e0fdf1060a2ae901d84e3cae94794d8c9e319addb124a8250e4e2ae7d397b7d9217993a2f7970b0
+"@gewis/tsconfig@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "@gewis/tsconfig@npm:2.3.1"
+  checksum: 10c0/1142bf15bf908d94cb5ca8a4696290457cb8309952571478a0253e37203aa719e51fe59b98df1fab31eb5b6988d47db6a8fe998a67d07a3b75de092fb02d18a2
   languageName: node
   linkType: hard
 
@@ -1047,12 +1047,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^22.13.10":
-  version: 22.13.10
-  resolution: "@types/node@npm:22.13.10"
+"@types/node@npm:^22.13.13":
+  version: 22.13.13
+  resolution: "@types/node@npm:22.13.13"
   dependencies:
     undici-types: "npm:~6.20.0"
-  checksum: 10c0/a3865f9503d6f718002374f7b87efaadfae62faa499c1a33b12c527cfb9fd86f733e1a1b026b80c5a0e4a965701174bc3305595a7d36078aa1abcf09daa5dee9
+  checksum: 10c0/daf792ba5dcff1316abf4b33680f94b792f8d54d6ae495efc8929531e0ba1284a248d29aab117d2259f9280284d986ad5799b193b0516e2b926d713aab835f7d
   languageName: node
   linkType: hard
 
@@ -1065,12 +1065,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^19.0.10":
-  version: 19.0.10
-  resolution: "@types/react@npm:19.0.10"
+"@types/react@npm:^19.0.12":
+  version: 19.0.12
+  resolution: "@types/react@npm:19.0.12"
   dependencies:
     csstype: "npm:^3.0.2"
-  checksum: 10c0/41884cca21850c8b2d6578b172ca0ca4fff6021251a68532b19f2031ac23dc5a9222470208065f8d9985d367376047df2f49ece8d927f7d04cdc94922b1eb34b
+  checksum: 10c0/c814b6af5c0fbcf5c65d031b1c9bf98c5b857e015254d95811f2851b27b869c3d31c6f35dab127dc6921a3dbda0b0622c6323d493a14b31b231a6a58c41c5e84
   languageName: node
   linkType: hard
 
@@ -2457,9 +2457,9 @@ __metadata:
     "@gewis/eslint-config-react": "npm:^2.3.0"
     "@gewis/eslint-config-typescript": "npm:^2.3.0"
     "@gewis/prettier-config": "npm:^2.2.2"
-    "@gewis/tsconfig": "npm:^2.3.0"
-    "@types/node": "npm:^22.13.10"
-    "@types/react": "npm:^19.0.10"
+    "@gewis/tsconfig": "npm:^2.3.1"
+    "@types/node": "npm:^22.13.13"
+    "@types/react": "npm:^19.0.12"
     "@types/react-dom": "npm:^19.0.4"
     "@vitejs/plugin-react": "npm:^4.3.4"
     "@vitejs/plugin-react-swc": "npm:^3.8.1"
