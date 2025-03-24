@@ -37,7 +37,9 @@ function App() {
   return (
     <div className="main">
       <div className="header-container">
-        <img src="/hubble-logo.png" alt="Hubble Logo" className="logo" />
+        <a href="https://hubble.cafe">
+          <img src="/hubble-logo.png" alt="Hubble Logo" className="logo" />
+        </a>
       </div>
       <div className="pickup-container">
         <h1> Ready for Pickup </h1>
@@ -51,7 +53,7 @@ function App() {
               initial={{ scale: 0 }}
               animate={{
                 scale: 1,
-                transition: { delay: 0.5, type: 'spring' },
+                transition: { delay: 0.5, type: 'spring', bounce: 0.3 },
               }}
               exit={{
                 opacity: 0,
