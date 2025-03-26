@@ -1,5 +1,5 @@
-fastapi==0.115.11
+fastapi==0.115.12
 fastapi-cli==0.0.7
 pycryptodome==3.21.0
 requests==2.32.3
-ruff==0.11.0
+ruff==0.11.2
