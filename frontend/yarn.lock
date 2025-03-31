@@ -489,13 +489,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:9.22.0":
-  version: 9.22.0
-  resolution: "@eslint/js@npm:9.22.0"
-  checksum: 10c0/5bcd009bb579dc6c6ed760703bdd741e08a48cd9decd677aa2cf67fe66236658cb09a00185a0369f3904e5cffba9e6e0f2ff4d9ba4fdf598fcd81d34c49213a5
-  languageName: node
-  linkType: hard
-
 "@eslint/js@npm:9.23.0":
   version: 9.23.0
   resolution: "@eslint/js@npm:9.23.0"
@@ -520,31 +513,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gewis/eslint-config-react@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "@gewis/eslint-config-react@npm:2.3.0"
+"@gewis/eslint-config-react@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "@gewis/eslint-config-react@npm:2.4.0"
   dependencies:
     eslint-plugin-jsx-a11y: "npm:^6.10.2"
     eslint-plugin-react: "npm:^7.37.4"
     eslint-plugin-react-hooks: "npm:5.2.0"
   peerDependencies:
     eslint: "*"
-  checksum: 10c0/5290187ef9beb7a2fc9dd75c7e809262d5a7bd17d298306f86afb45cc155f0a17a7673ad7cc18deb5dce42421fca8ddfca42ab2ed4a5933c566917819bafe7d6
+  checksum: 10c0/78ff5fe5311dd446c4757e2f489212b31b16316929dd5ece1b16897d51cdacc5f081129c107b08905c618eec990beb6ba336375aee328a8efad4c0a5a36c71fb
   languageName: node
   linkType: hard
 
-"@gewis/eslint-config-typescript@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "@gewis/eslint-config-typescript@npm:2.3.0"
+"@gewis/eslint-config-typescript@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "@gewis/eslint-config-typescript@npm:2.4.0"
   dependencies:
     "@eslint/compat": "npm:^1.2.7"
-    "@eslint/js": "npm:9.22.0"
+    "@eslint/js": "npm:9.23.0"
     eslint-import-resolver-typescript: "npm:^3.8.3"
     eslint-plugin-import: "npm:^2.31.0"
     typescript-eslint: "npm:^8.25.0"
   peerDependencies:
     eslint: "*"
-  checksum: 10c0/ee487de19e679c6919c318a0439a7f5a74cac838a31f659485490375d9dd7406ac3f3b321e19c0d6f2ab7e4fde261c3d27e8e7f952201ebc497c0ab4742197b2
+  checksum: 10c0/91a4318cc6c9531d2f895384717b60137c93cf3e0fae234e0c06c3dccfb4676c9853a872a28d867340e9c2029800b8330c0138305e928b95ccdcd0da19085120
   languageName: node
   linkType: hard
 
@@ -2586,8 +2579,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "food-hubble@workspace:."
   dependencies:
-    "@gewis/eslint-config-react": "npm:^2.3.0"
-    "@gewis/eslint-config-typescript": "npm:^2.3.0"
+    "@gewis/eslint-config-react": "npm:^2.4.0"
+    "@gewis/eslint-config-typescript": "npm:^2.4.0"
     "@gewis/prettier-config": "npm:^2.2.2"
     "@gewis/tsconfig": "npm:^2.3.1"
     "@types/node": "npm:^22.13.13"
