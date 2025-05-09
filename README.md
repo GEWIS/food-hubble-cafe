@@ -1,3 +1,6 @@
+> [!NOTE]
+> This project has been moved to [Hubble Order Manager](https://github.com/Hubble-Community-Cafe/Hubble-Order-Manager).
+
 # Hubble Food Tracker
 
 This repository contains the source code for the new Hubble Food Tracker.
