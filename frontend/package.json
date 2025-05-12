@@ -21,7 +21,7 @@
     "framer-motion": "^12.6.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
     "@gewis/eslint-config-react": "^2.3.0",
