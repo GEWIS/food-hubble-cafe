@@ -561,10 +561,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gewis/tsconfig@npm:^2.3.1":
-  version: 2.3.1
-  resolution: "@gewis/tsconfig@npm:2.3.1"
-  checksum: 10c0/1142bf15bf908d94cb5ca8a4696290457cb8309952571478a0253e37203aa719e51fe59b98df1fab31eb5b6988d47db6a8fe998a67d07a3b75de092fb02d18a2
+"@gewis/tsconfig@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "@gewis/tsconfig@npm:2.4.0"
+  checksum: 10c0/bdd07bc0d228519634a8b5c24d9d74dc876ed39d8789e2c97e670aaa0a586284f1dbb4812a2c8cf23baced4e04a73fd0e5be662392b354f26aa8d324cfdc11d5
   languageName: node
   linkType: hard
 
@@ -2589,7 +2589,7 @@ __metadata:
     "@gewis/eslint-config-react": "npm:^2.3.0"
     "@gewis/eslint-config-typescript": "npm:^2.3.0"
     "@gewis/prettier-config": "npm:^2.2.2"
-    "@gewis/tsconfig": "npm:^2.3.1"
+    "@gewis/tsconfig": "npm:^2.4.0"
     "@types/node": "npm:^22.13.13"
     "@types/react": "npm:^19.0.12"
     "@types/react-dom": "npm:^19.0.4"

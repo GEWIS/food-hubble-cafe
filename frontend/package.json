@@ -13,7 +13,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@gewis/tsconfig": "^2.3.1",
+    "@gewis/tsconfig": "^2.4.0",
     "@types/node": "^22.13.13",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
